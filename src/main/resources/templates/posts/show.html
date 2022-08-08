@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace=" fragments/navbar :: navbar"></nav>
+<header th:replace="fragments/header :: header"></header>
+<div class="post">
+    <h5>Post id: <span th:text="${post.id}"></span></h5>
+    <h1><span th:text="${post.title}"></span></h1>
+    <h3>Description: <span th:text="${post.body}"></span></h3>
+    <h4 th:text="${post.getUser().getEmail()}"></h4>
+</div>
+
+<footer th:replace=" fragments/footer :: footer"></footer>
+</body>
+</html>

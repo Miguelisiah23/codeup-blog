@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments/head :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace=" fragments/navbar :: navbar"></nav>
+<header th:replace="fragments/header :: header"></header>
+
+<h1>The number rolled was <span th:text="${roll1}"></span></h1>
+<h3 th:if="${num == roll1}">You guessed right!</h3>
+<h3 th:if="${num != roll1}">try again!</h3>
+
+<h1>The number rolled was <span th:text="${roll2}"></span></h1>
+<h3 th:if="${num == roll2}">You guessed right!</h3>
+<h3 th:if="${num != roll2}">try again!</h3>
+
+<h1>The number rolled was <span th:text="${roll3}"></span></h1>
+<h3 th:if="${num == roll3}">You guessed right!</h3>
+<h3 th:if="${num != roll3}">try again!</h3>
+
+<h1>The number rolled was <span th:text="${roll4}"></span></h1>
+<h3 th:if="${num == roll4}">You guessed right!</h3>
+<h3 th:if="${num != roll4}">try again!</h3>
+
+<h1>The number rolled was <span th:text="${roll5}"></span></h1>
+<h3 th:if="${num == roll5}">You guessed right!</h3>
+<h3 th:if="${num != roll5}">try again!</h3>
+
+<footer th:replace=" fragments/footer :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Welcome!</title>
+    <style rel="stylesheet">
+        body {
+            margin: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: start;
+            align-items: end;
+            padding: 1em;
+            width: 100%;
+            background: black;
+            color: aliceblue;
+        }
+        nav ul {
+            margin: 0;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            list-style: none;
+        }
+
+        li {
+            padding: 1em;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            bottom: 0;
+            width: 100%;
+            background: black;
+            color: aliceblue;
+            position: absolute;
+            margin-top: fill;
+        }
+        div{
+            margin:.5em .5em;
+        }
+        .allPosts{
+            display: flex;
+            justify-content: start;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .post{
+            padding: .5em;
+        }
+        li a:hover{
+            background: sandybrown;
+            color: black;
+            border-radius: 5px;
+        }
+        a{
+            color: aliceblue;
+            padding: 1em;
+        }
+        .post a{
+            color: black;
+            text-decoration: none;
+            padding: .5em;
+
+        }
+        .nav{
+            padding: 0;
+        }
+        .createForm{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: black;
+            color: sandybrown;
+            width: 300px;
+            border-radius: 10px;
+        }
+        input, label{
+            margin: .5em;
+        }
+        .form-div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+    </style>
+</head>
+<body>
+
+</body>
+</html>

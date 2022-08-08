@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace=" fragments/navbar :: navbar"></nav>
+<header th:replace="fragments/header :: header"></header>
+<div class="allPosts">
+    <div class="post" th:each="post : ${posts}">
+        <h3 th:if="${post.getTags().contains('sad')}">Post by:
+            <span th:if="${post.getUser() != null}">
+            <span th:text="${post.getUser().getUser_name()}"></span>
+        </span>
+        </h3>
+        <h1><a th:href="@{/posts/{id}(id=${post.id})}"><span th:text="${post.getTitle()}"></span></a></h1>
+
+
+        <h4>tags: <span th:each="tag : ${post.getTags()}">
+            #<span th:text="${tag.getName()}">
+            </span>
+        </span></h4>
+
+
+
+
+        <h3>Description: <span th:text="${post.getBody()}"></span></h3>
+    </div>
+</div>
+<footer th:replace=" fragments/footer :: footer"></footer>
+</body>
+</html>
