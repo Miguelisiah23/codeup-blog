@@ -1,5 +1,6 @@
 package com.codeup.springblog.Controllers;
 
+import com.codeup.springblog.Models.EmailService;
 import com.codeup.springblog.Models.Post;
 import com.codeup.springblog.Repositories.PostRepository;
 import com.codeup.springblog.Repositories.UserRepository;
@@ -15,9 +16,12 @@ public class PostController {
     private PostRepository postsDao;
     private UserRepository usersDao;
 
-    public PostController(PostRepository postsDao, UserRepository usersDao){
+    private EmailService emailService;
+
+    public PostController(PostRepository postsDao, UserRepository usersDao, EmailService emailService){
         this.postsDao = postsDao;
         this.usersDao = usersDao;
+        this.emailService = emailService;
 
     }
 
@@ -42,16 +46,27 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String creatForm() {
+    public String creatForm(Model model) {
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-    public String createPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body) {
-        postsDao.save(new Post(title,body,usersDao.getById(1L)));
+    public String createPost(@ModelAttribute Post post) {
+        post.setUser(usersDao.getById(1L));
+
+        postsDao.save(post);
+        emailService.prepareAndSend(post,"You just created a post","hello user, you just created a post!");
+
 
 
         return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String editPost(Model model, @PathVariable long id){
+        model.addAttribute("post", postsDao.findById(id));
+        return "/posts/create";
     }
 
 }

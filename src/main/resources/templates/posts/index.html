@@ -6,7 +6,7 @@
 </head>
 <body>
 <nav th:replace=" fragments/navbar :: navbar"></nav>
-<header th:replace="fragments/header :: header"></header>
+<header th:replace="fragments/header :: header(header ='Welcome !')"></header>
 <div class="allPosts">
     <div class="post" th:each="post : ${posts}">
         <h3 th:if="${post.getTags().contains('sad')}">Post by:

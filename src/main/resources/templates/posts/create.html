@@ -7,13 +7,14 @@
 </head>
 <body>
 <nav th:replace=" fragments/navbar :: navbar"></nav>
-<header th:replace="fragments/header :: header"></header>
+<header th:replace="fragments/header :: header(header='Create a Post!')"></header>
 <div class="form-div">
-<form class="createForm" action="/posts/create" method="post">
+<form class="createForm" th:action="@{/posts/create}" th:method="POST" th:object="${post}">
     <label for="title">Title: </label>
-    <input id="title" name="title">
+    <input id="title" name="title" th:field="*{title}">
     <label for="body">Body: </label>
-    <input id="body" name="body">
+    <input id="body" name="body" th:field="*{body}">
+    <input type="hidden" name="id" th:field="*{id}">
     <button type="submit">Create!</button>
 </form>
 </div>

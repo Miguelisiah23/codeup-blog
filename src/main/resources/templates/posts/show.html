@@ -6,7 +6,7 @@
 </head>
 <body>
 <nav th:replace=" fragments/navbar :: navbar"></nav>
-<header th:replace="fragments/header :: header"></header>
+<header th:replace="fragments/header :: header('Viewing post')"></header>
 <div class="post">
     <h5>Post id: <span th:text="${post.id}"></span></h5>
     <h1><span th:text="${post.title}"></span></h1>
