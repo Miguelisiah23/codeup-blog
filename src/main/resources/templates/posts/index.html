@@ -9,15 +9,15 @@
 <header th:replace="fragments/header :: header(header ='Welcome !')"></header>
 <div class="allPosts">
     <div class="post" th:each="post : ${posts}">
-        <h3 th:if="${post.getTags().contains('sad')}">Post by:
+        <h3>Post by:
             <span th:if="${post.getUser() != null}">
-            <span th:text="${post.getUser().getUser_name()}"></span>
+            <span th:text="${post.getUser().getUsername()}"></span>
         </span>
         </h3>
         <h1><a th:href="@{/posts/{id}(id=${post.id})}"><span th:text="${post.getTitle()}"></span></a></h1>
 
 
-        <h4>tags: <span th:each="tag : ${post.getTags()}">
+        <h4 th:if="!${post.getTags().isEmpty()}">tags: <span th:each="tag : ${post.getTags()}">
             #<span th:text="${tag.getName()}">
             </span>
         </span></h4>

@@ -10,9 +10,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
-    private String user_name;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
+    private String username;
+    @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
     private String password;
@@ -20,18 +20,31 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> post;
 
-    public User(long id, String user_name, String email, String password) {
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+        post = copy.post;
+    }
+    public User(long id, String username, String email, String password) {
         this.id = id;
-        this.user_name = user_name;
+        this.username = username;
         this.email = email;
         this.password = password;
     }
 
 
-    public User(String user_name, String email, String password) {
-        this.user_name = user_name;
+    public User(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
+    }
+    public User(String username, String email, String password,List<Post> post) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.post = post;
     }
     public User(){}
 
@@ -43,12 +56,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_name(String userName) {
-        this.user_name = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -65,5 +78,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Post> getPost() {
+        return post;
+    }
+
+    public void setPost(List<Post> post) {
+        this.post = post;
     }
 }

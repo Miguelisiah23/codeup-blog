@@ -9,14 +9,24 @@
 <nav th:replace=" fragments/navbar :: navbar"></nav>
 <header th:replace="fragments/header :: header(header='Create a Post!')"></header>
 <div class="form-div">
-<form class="createForm" th:action="@{/posts/create}" th:method="POST" th:object="${post}">
-    <label for="title">Title: </label>
-    <input id="title" name="title" th:field="*{title}">
-    <label for="body">Body: </label>
-    <input id="body" name="body" th:field="*{body}">
-    <input type="hidden" name="id" th:field="*{id}">
-    <button type="submit">Create!</button>
-</form>
+    <form class="createForm" th:action="@{/posts/create}" th:method="POST" th:object="${post}">
+        <label for="title">Title: </label>
+        <input id="title" name="title" th:field="*{title}">
+        <label for="body">Body: </label>
+        <input id="body" name="body" th:field="*{body}">
+        <input type="hidden" name="id" th:field="*{id}">
+        <fieldset th:field="*{tags}">
+            <label for="happy">#Happy</label>
+            <input type="checkbox" name="tags" id="happy" value="happy">
+            <label for="sad">#Sad</label>
+            <input type="checkbox" name="tags" id="sad" value="sad">
+            <label for="funny">#Funny</label>
+            <input type="checkbox" name="tags" id="funny" value="funny">
+            <label for="conspiracy">#Conspiracy</label>
+            <input type="checkbox" name="tags" id="conspiracy" value="conspiracy">
+        </fieldset>
+        <button type="submit">Create!</button>
+    </form>
 </div>
 <footer th:replace=" fragments/footer :: footer"></footer>
 
